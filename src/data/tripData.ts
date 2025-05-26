@@ -2,7 +2,7 @@
 export interface Activity {
   id: string;
   name: string;
-  category: 'concert' | 'cafe' | 'bar' | 'gaming' | 'shopping' | 'sightseeing' | 'transport' | 'accommodation';
+  category: 'concert' | 'cafe' | 'bar' | 'gaming' | 'shopping' | 'sightseeing' | 'transport' | 'accommodation' | 'restaurant' | 'pub';
   location: string;
   address?: string;
   time?: string;
@@ -30,219 +30,231 @@ export interface TripData {
 }
 
 export const tripData: TripData = {
-  title: "Solo Journey: London & Belgium Adventure",
-  dates: "March 15-25, 2024",
+  title: "London & Antwerp Solo Trip",
+  dates: "June 5-11, 2025",
   locations: ["London, UK", "Antwerp, Belgium"],
   days: [
     {
-      date: "2024-03-15",
+      date: "2025-06-05",
       location: "London",
       activities: [
         {
           id: "1",
-          name: "Arrival at Heathrow",
+          name: "Arrival in London",
           category: "transport",
-          location: "London Heathrow Airport",
-          time: "14:30",
-          description: "Flight arrival - collect luggage and head to accommodation"
+          location: "London",
+          time: "TBD",
+          description: "Flight from Israel to London"
         },
         {
           id: "2",
-          name: "Check-in at The Z Hotel Piccadilly",
+          name: "Check-in Airbnb Olympia/Hammersmith",
           category: "accommodation",
           location: "London",
-          address: "17 Leicester Square, London WC2H 7LE",
-          time: "16:00",
-          coordinates: [-0.1302, 51.5085]
+          address: "Olympia / Hammersmith area",
+          description: "Quiet urban area with local cafés and good transport access",
+          coordinates: [-0.2067, 51.4994]
         },
         {
           id: "3",
-          name: "Explore Covent Garden",
+          name: "Explore Local Area",
           category: "sightseeing",
           location: "London",
-          address: "Covent Garden, London WC2E",
-          time: "18:00",
-          description: "Evening stroll and dinner",
-          coordinates: [-0.1225, 51.5120]
+          time: "Evening",
+          description: "Get familiar with the neighborhood, find local cafés and bars"
         }
       ]
     },
     {
-      date: "2024-03-16",
+      date: "2025-06-06",
       location: "London",
       activities: [
         {
           id: "4",
-          name: "Monmouth Coffee",
+          name: "Local Café Hunt",
           category: "cafe",
           location: "London",
-          address: "27 Monmouth St, London WC2H 9EU",
-          time: "09:00",
-          description: "Perfect morning coffee to start the day",
-          coordinates: [-0.1263, 51.5134]
+          time: "Morning",
+          description: "Find cozy, sketch-friendly cafés away from tourist areas"
         },
         {
           id: "5",
-          name: "British Museum",
-          category: "sightseeing",
+          name: "Retro Gaming Store Visit",
+          category: "gaming",
           location: "London",
-          address: "Great Russell St, London WC1B 3DG",
-          time: "10:30",
-          description: "Explore ancient artifacts and cultures",
-          coordinates: [-0.1267, 51.5194]
+          time: "Afternoon",
+          description: "Explore retro gaming stores and pixel art shops"
         },
         {
           id: "6",
-          name: "Retro Game Base",
-          category: "gaming",
+          name: "Quiet Local Bar",
+          category: "bar",
           location: "London",
-          address: "14 Goodge St, London W1T 2QJ",
-          time: "15:00",
-          description: "Amazing collection of retro gaming gear",
-          coordinates: [-0.1348, 51.5211]
-        },
-        {
-          id: "7",
-          name: "The Piano Works West End",
-          category: "concert",
-          location: "London",
-          address: "113-117 Farringdon Rd, London EC1R 3BX",
-          time: "20:00",
-          description: "Interactive piano bar with live music",
-          coordinates: [-0.1088, 51.5206]
+          time: "Evening",
+          description: "Find a quiet bar where it's easy to meet locals"
         }
       ]
     },
     {
-      date: "2024-03-17",
+      date: "2025-06-07",
       location: "London",
       activities: [
         {
+          id: "7",
+          name: "Clothing Shopping",
+          category: "shopping",
+          location: "London",
+          time: "Morning",
+          description: "Explore local clothing shops, avoid touristy shopping areas"
+        },
+        {
           id: "8",
-          name: "Workshop Coffee",
+          name: "Café Sketching Session",
           category: "cafe",
           location: "London",
-          address: "1A Marble Arch, London W1H 7EJ",
-          time: "08:30",
-          description: "Specialty coffee roasters",
-          coordinates: [-0.1586, 51.5136]
+          time: "Afternoon",
+          description: "Find a cozy café perfect for sketching"
         },
         {
           id: "9",
-          name: "Camden Market",
-          category: "shopping",
+          name: "Optional Jazz Show",
+          category: "concert",
           location: "London",
-          address: "Camden Lock Pl, London NW1 8AF",
-          time: "11:00",
-          description: "Vintage clothing and unique finds",
-          coordinates: [-0.1459, 51.5414]
-        },
+          time: "Evening (Flexible)",
+          description: "Cozy and atmospheric jazz venue - optional attendance",
+          notes: "Flexible timing, preferably intimate venue"
+        }
+      ]
+    },
+    {
+      date: "2025-06-08",
+      location: "London",
+      activities: [
         {
           id: "10",
-          name: "Gaming Heads Store",
-          category: "gaming",
+          name: "Pre-Concert Preparation",
+          category: "sightseeing",
           location: "London",
-          address: "30 Great Marlborough St, London W1F 7JU",
-          time: "14:30",
-          description: "Gaming collectibles and memorabilia",
-          coordinates: [-0.1394, 51.5155]
+          time: "Afternoon",
+          description: "Relax and prepare for the evening concert"
         },
         {
           id: "11",
-          name: "Quiet Cocktails at Swift",
-          category: "bar",
+          name: "YOASOBI Concert",
+          category: "concert",
           location: "London",
-          address: "12 Old Compton St, London W1D 4TQ",
-          time: "19:00",
-          description: "Intimate cocktail bar with excellent drinks",
-          coordinates: [-0.1305, 51.5133]
+          address: "Wembley Stadium",
+          time: "Evening",
+          description: "Main event - YOASOBI live performance",
+          coordinates: [-0.2795, 51.5560]
         }
       ]
     },
     {
-      date: "2024-03-20",
-      location: "Antwerp",
+      date: "2025-06-09",
+      location: "London to Antwerp",
       activities: [
         {
           id: "12",
-          name: "Eurostar to Brussels",
+          name: "Train to Antwerp",
           category: "transport",
-          location: "London to Brussels",
-          time: "08:31",
-          description: "High-speed train journey to Belgium"
+          location: "London to Antwerp",
+          time: "TBD",
+          description: "Train journey from London to Antwerp via Brussels",
+          notes: "Preferred transport method"
         },
         {
           id: "13",
-          name: "Train to Antwerp",
-          category: "transport",
-          location: "Brussels to Antwerp",
-          time: "12:00",
-          description: "Local train to Antwerp Central"
-        },
-        {
-          id: "14",
-          name: "Hotel Julien",
+          name: "Check-in Antwerp Airbnb",
           category: "accommodation",
           location: "Antwerp",
-          address: "Korte Nieuwstraat 24, 2000 Antwerp",
-          time: "14:00",
+          address: "Near MoMu / Plantin-Moretus Museum",
+          description: "Quiet and central location for solo urban experience",
           coordinates: [4.4017, 51.2194]
         },
         {
-          id: "15",
-          name: "Koffie Academie",
-          category: "cafe",
+          id: "14",
+          name: "Evening Local Exploration",
+          category: "sightseeing",
           location: "Antwerp",
-          address: "Volkstraat 8, 2000 Antwerp",
-          time: "16:00",
-          description: "Local coffee roastery with amazing beans",
-          coordinates: [4.4042, 51.2211]
+          time: "Evening",
+          description: "Get familiar with the area, find nearby local spots"
         }
       ]
     },
     {
-      date: "2024-03-21",
+      date: "2025-06-10",
       location: "Antwerp",
       activities: [
         {
-          id: "16",
-          name: "Caffènation",
+          id: "15",
+          name: "Local Café Visit",
           category: "cafe",
           location: "Antwerp",
-          address: "Hopland 44, 2000 Antwerp",
-          time: "09:00",
-          description: "Third-wave coffee pioneers in Belgium",
-          coordinates: [4.4025, 51.2178]
+          time: "Morning",
+          description: "One nice local café for morning coffee"
+        },
+        {
+          id: "16",
+          name: "Local Food Experience",
+          category: "restaurant",
+          location: "Antwerp",
+          time: "Lunch",
+          description: "Try good local Belgian food"
         },
         {
           id: "17",
-          name: "MAS Museum",
+          name: "Pre-Concert Rest",
           category: "sightseeing",
           location: "Antwerp",
-          address: "Hanzestedenplaats 1, 2000 Antwerp",
-          time: "10:30",
-          description: "Modern art and city history",
-          coordinates: [4.4039, 51.2289]
+          time: "Afternoon",
+          description: "Relax before the evening concert"
         },
         {
           id: "18",
-          name: "Game Mania",
-          category: "gaming",
+          name: "Ado Concert",
+          category: "concert",
           location: "Antwerp",
-          address: "Groenplaats 31, 2000 Antwerp",
-          time: "15:00",
-          description: "Large gaming store with retro section",
-          coordinates: [4.4008, 51.2192]
+          time: "Evening",
+          description: "Main event - Ado live performance"
         },
         {
           id: "19",
-          name: "Jazz Café",
-          category: "concert",
+          name: "Post-Concert Pub",
+          category: "pub",
           location: "Antwerp",
-          address: "Melkmarkt 15, 2000 Antwerp",
-          time: "20:30",
-          description: "Intimate jazz venue with local musicians",
-          coordinates: [4.4028, 51.2201]
+          time: "Late Evening",
+          description: "Visit a local pub after the concert to unwind"
+        }
+      ]
+    },
+    {
+      date: "2025-06-11",
+      location: "Antwerp to London",
+      activities: [
+        {
+          id: "20",
+          name: "Final Local Experience",
+          category: "cafe",
+          location: "Antwerp",
+          time: "Morning",
+          description: "Last Belgian café experience before departure"
+        },
+        {
+          id: "21",
+          name: "Travel to London",
+          category: "transport",
+          location: "Antwerp to London",
+          time: "Afternoon",
+          description: "Return journey to London for evening flight"
+        },
+        {
+          id: "22",
+          name: "Flight to Israel",
+          category: "transport",
+          location: "London",
+          time: "Evening",
+          description: "Return flight from London to Israel"
         }
       ]
     }
@@ -250,47 +262,47 @@ export const tripData: TripData = {
   accommodations: [
     {
       id: "acc1",
-      name: "The Z Hotel Piccadilly",
+      name: "Airbnb Olympia/Hammersmith",
       category: "accommodation",
       location: "London",
-      address: "17 Leicester Square, London WC2H 7LE",
-      description: "Modern boutique hotel in central London",
-      coordinates: [-0.1302, 51.5085]
+      address: "Olympia / Hammersmith area",
+      description: "Quiet urban area with local cafés and bars nearby, excellent transport access",
+      coordinates: [-0.2067, 51.4994]
     },
     {
       id: "acc2",
-      name: "Hotel Julien",
+      name: "Airbnb Near MoMu",
       category: "accommodation",
       location: "Antwerp",
-      address: "Korte Nieuwstraat 24, 2000 Antwerp",
-      description: "Boutique hotel in historic Antwerp center",
+      address: "Near MoMu / Plantin-Moretus Museum area",
+      description: "Quiet and central location perfect for solo urban experience",
       coordinates: [4.4017, 51.2194]
     }
   ],
   transport: [
     {
       id: "tr1",
-      name: "Heathrow Express",
+      name: "Flight Israel to London",
       category: "transport",
-      location: "London",
-      description: "Airport to Paddington Station",
-      price: "£25"
+      location: "Israel to London",
+      description: "Outbound international flight",
+      price: "TBD"
     },
     {
       id: "tr2",
-      name: "Eurostar",
+      name: "Train London to Antwerp",
       category: "transport",
-      location: "London to Brussels",
-      description: "High-speed rail connection",
-      price: "£150"
+      location: "London to Antwerp",
+      description: "Preferred train route via Brussels - Eurostar + local connection",
+      price: "TBD"
     },
     {
       id: "tr3",
-      name: "Belgian Railways",
+      name: "Flight London to Israel",
       category: "transport",
-      location: "Brussels to Antwerp",
-      description: "Local train service",
-      price: "€8"
+      location: "London to Israel",
+      description: "Return international flight",
+      price: "TBD"
     }
   ]
 };

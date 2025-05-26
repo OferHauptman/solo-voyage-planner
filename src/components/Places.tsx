@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
@@ -11,7 +10,9 @@ const categoryColors = {
   shopping: 'bg-blue-500',
   sightseeing: 'bg-indigo-500',
   transport: 'bg-gray-500',
-  accommodation: 'bg-orange-500'
+  accommodation: 'bg-orange-500',
+  restaurant: 'bg-emerald-500',
+  pub: 'bg-rose-500'
 };
 
 const categoryIcons = {
@@ -22,7 +23,9 @@ const categoryIcons = {
   shopping: '🛍️',
   sightseeing: '🏛️',
   transport: '🚂',
-  accommodation: '🏨'
+  accommodation: '🏨',
+  restaurant: '🍽️',
+  pub: '🍺'
 };
 
 const categories = [
@@ -32,7 +35,9 @@ const categories = [
   { id: 'bar', name: 'Bars', icon: '🍸' },
   { id: 'gaming', name: 'Gaming', icon: '🎮' },
   { id: 'shopping', name: 'Shopping', icon: '🛍️' },
-  { id: 'sightseeing', name: 'Sights', icon: '🏛️' }
+  { id: 'sightseeing', name: 'Sights', icon: '🏛️' },
+  { id: 'restaurant', name: 'Food', icon: '🍽️' },
+  { id: 'pub', name: 'Pubs', icon: '🍺' }
 ];
 
 const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
@@ -60,6 +65,10 @@ const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
         
         {activity.description && (
           <p className="text-gray-700 text-sm mb-3">{activity.description}</p>
+        )}
+        
+        {activity.notes && (
+          <p className="text-gray-600 text-xs mb-2 italic">{activity.notes}</p>
         )}
         
         <div className="flex items-center justify-between">

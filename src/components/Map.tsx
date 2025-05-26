@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
@@ -11,7 +10,9 @@ const categoryColors = {
   shopping: 'bg-blue-500',
   sightseeing: 'bg-indigo-500',
   transport: 'bg-gray-500',
-  accommodation: 'bg-orange-500'
+  accommodation: 'bg-orange-500',
+  restaurant: 'bg-emerald-500',
+  pub: 'bg-rose-500'
 };
 
 const categoryIcons = {
@@ -22,7 +23,9 @@ const categoryIcons = {
   shopping: '🛍️',
   sightseeing: '🏛️',
   transport: '🚂',
-  accommodation: '🏨'
+  accommodation: '🏨',
+  restaurant: '🍽️',
+  pub: '🍺'
 };
 
 // Mock map component since we don't have actual map integration
@@ -42,6 +45,7 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
           <div className="text-center">
             <span className="block text-2xl mb-1">🇬🇧</span>
             <span className="text-sm font-semibold text-travel-navy">London</span>
+            <span className="block text-xs text-gray-600">Jun 5-8</span>
           </div>
         </div>
 
@@ -50,6 +54,7 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
           <div className="text-center">
             <span className="block text-2xl mb-1">🇧🇪</span>
             <span className="text-sm font-semibold text-travel-navy">Antwerp</span>
+            <span className="block text-xs text-gray-600">Jun 9-11</span>
           </div>
         </div>
 
@@ -146,7 +151,7 @@ const Map: React.FC = () => {
     <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-6">
         <h1 className="text-2xl font-bold text-travel-navy mb-2">Trip Map</h1>
-        <p className="text-gray-600">Your journey through London & Belgium</p>
+        <p className="text-gray-600">Your journey through London & Antwerp</p>
       </div>
 
       <MapView activities={allActivities} />

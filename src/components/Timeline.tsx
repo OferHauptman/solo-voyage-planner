@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { format, parseISO } from 'date-fns';
 import { tripData, Activity } from '@/data/tripData';
@@ -12,7 +11,9 @@ const categoryColors = {
   shopping: 'bg-blue-100 text-blue-800 border-blue-200',
   sightseeing: 'bg-indigo-100 text-indigo-800 border-indigo-200',
   transport: 'bg-gray-100 text-gray-800 border-gray-200',
-  accommodation: 'bg-orange-100 text-orange-800 border-orange-200'
+  accommodation: 'bg-orange-100 text-orange-800 border-orange-200',
+  restaurant: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+  pub: 'bg-rose-100 text-rose-800 border-rose-200'
 };
 
 const categoryIcons = {
@@ -23,7 +24,9 @@ const categoryIcons = {
   shopping: '🛍️',
   sightseeing: '🏛️',
   transport: '🚂',
-  accommodation: '🏨'
+  accommodation: '🏨',
+  restaurant: '🍽️',
+  pub: '🍺'
 };
 
 const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activity, isLast }) => {
@@ -49,7 +52,9 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
           categoryColors[activity.category].includes('blue') && 'border-l-blue-400',
           categoryColors[activity.category].includes('indigo') && 'border-l-indigo-400',
           categoryColors[activity.category].includes('gray') && 'border-l-gray-400',
-          categoryColors[activity.category].includes('orange') && 'border-l-orange-400'
+          categoryColors[activity.category].includes('orange') && 'border-l-orange-400',
+          categoryColors[activity.category].includes('emerald') && 'border-l-emerald-400',
+          categoryColors[activity.category].includes('rose') && 'border-l-rose-400'
         )}>
           <div className="flex items-start justify-between">
             <div className="flex-1">
@@ -62,6 +67,9 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
               )}
               {activity.description && (
                 <p className="text-gray-700 text-sm mt-2">{activity.description}</p>
+              )}
+              {activity.notes && (
+                <p className="text-gray-600 text-xs mt-1 italic">{activity.notes}</p>
               )}
               {activity.price && (
                 <span className="inline-block bg-travel-orange text-white text-xs px-2 py-1 rounded-full mt-2">
