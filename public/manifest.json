@@ -1,0 +1,29 @@
+
+{
+  "name": "Solo Voyage Planner",
+  "short_name": "TripPlanner",
+  "description": "Your personal trip planning companion for London & Antwerp",
+  "theme_color": "#94a673",
+  "background_color": "#fbfcf8",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "512x512"
+    }
+  ]
+}
