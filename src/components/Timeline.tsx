@@ -90,12 +90,11 @@ const Timeline: React.FC = () => {
             <div className="sticky top-0 z-30 bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7] to-transparent">
               <CollapsibleTrigger 
                 onClick={() => toggleDay(day.date)}
-                className="w-full bg-white/95 backdrop-blur-sm py-4 px-4 shadow-sm border-b border-[#ececec] flex items-center justify-between hover:bg-white/100 transition-colors"
+                className="w-screen bg-white/95 backdrop-blur-sm flex items-center justify-between hover:bg-white/100 transition-colors border-b border-[#ececec]"
                 style={{ 
-                  marginLeft: '-100vw',
-                  marginRight: '-100vw',
-                  paddingLeft: 'calc(100vw - 50% + 20px)',
-                  paddingRight: 'calc(100vw - 50% + 20px)',
+                  marginLeft: 'calc(-50vw + 50%)',
+                  paddingLeft: 'calc(50vw - 50% + 20px)',
+                  paddingRight: 'calc(50vw - 50% + 20px)',
                   paddingTop: '32px',
                   paddingBottom: '16px'
                 }}
