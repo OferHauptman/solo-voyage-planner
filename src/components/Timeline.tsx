@@ -36,8 +36,8 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   const IconComponent = categoryIcons[activity.category];
   
   return (
-    <div className="mb-4">
-      <div className="p-4 rounded-xl bg-white border border-[#ececec] shadow-sm">
+    <div className="mb-1">
+      <div className="mx-5 p-4 rounded-xl bg-white border border-[#ececec] shadow-sm">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <h3 className="font-semibold text-base mb-1" style={{ color: '#252525' }}>{activity.name}</h3>
@@ -60,11 +60,6 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
               <p className="text-xs mb-3 italic bg-muted/50 p-2 rounded-lg" style={{ color: '#252525', opacity: 0.7 }}>
                 💭 {activity.notes}
               </p>
-            )}
-            {activity.price && (
-              <span className="inline-block text-xs px-3 py-1.5 rounded-full font-medium shadow-sm" style={{ backgroundColor: '#945BD9', color: '#ffffff' }}>
-                {activity.price}
-              </span>
             )}
           </div>
           <span className={cn(
@@ -92,10 +87,18 @@ const Timeline: React.FC = () => {
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-6">
           <Collapsible open={openDays[day.date] ?? true}>
-            <div className="sticky top-0 z-30 bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7] to-transparent pb-4">
+            <div className="sticky top-0 z-30 bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7] to-transparent">
               <CollapsibleTrigger 
                 onClick={() => toggleDay(day.date)}
-                className="w-full bg-white/95 backdrop-blur-sm py-4 px-4 rounded-2xl shadow-sm border border-[#ececec] flex items-center justify-between hover:bg-white/100 transition-colors" 
+                className="w-full bg-white/95 backdrop-blur-sm py-4 px-4 shadow-sm border-b border-[#ececec] flex items-center justify-between hover:bg-white/100 transition-colors"
+                style={{ 
+                  marginLeft: '-100vw',
+                  marginRight: '-100vw',
+                  paddingLeft: 'calc(100vw - 50% + 20px)',
+                  paddingRight: 'calc(100vw - 50% + 20px)',
+                  paddingTop: '32px',
+                  paddingBottom: '16px'
+                }}
               >
                 <div className="text-left">
                   <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
@@ -106,15 +109,15 @@ const Timeline: React.FC = () => {
                   </p>
                 </div>
                 {openDays[day.date] === false ? (
-                  <ChevronDown className="h-5 w-5" style={{ color: '#252525' }} />
+                  <ChevronDown className="h-5 w-5 transition-transform duration-200" style={{ color: '#252525' }} />
                 ) : (
-                  <ChevronUp className="h-5 w-5" style={{ color: '#252525' }} />
+                  <ChevronUp className="h-5 w-5 transition-transform duration-200" style={{ color: '#252525' }} />
                 )}
               </CollapsibleTrigger>
             </div>
             
-            <CollapsibleContent>
-              <div className="px-4 space-y-0">
+            <CollapsibleContent className="transition-all duration-300 ease-in-out data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+              <div className="space-y-0 pt-2">
                 {day.activities.map((activity, activityIndex) => (
                   <div
                     key={activity.id}
