@@ -49,45 +49,6 @@
     --pink: 201 87 146;
     --orange: 248 181 95;
   }
-
-  .dark {
-    --background: 26 31 19;
-    --foreground: 246 247 240;
-
-    --card: 52 59 42;
-    --card-foreground: 246 247 240;
-
-    --popover: 52 59 42;
-    --popover-foreground: 246 247 240;
-
-    --primary: 180 196 151;
-    --primary-foreground: 26 31 19;
-
-    --secondary: 61 71 48;
-    --secondary-foreground: 233 236 220;
-
-    --muted: 42 48 35;
-    --muted-foreground: 148 166 115;
-
-    --accent: 61 71 48;
-    --accent-foreground: 233 236 220;
-
-    --destructive: 127 29 29;
-    --destructive-foreground: 254 242 242;
-
-    --border: 74 85 55;
-    --input: 74 85 55;
-    --ring: 180 196 151;
-
-    --sidebar-background: 26 31 19;
-    --sidebar-foreground: 233 236 220;
-    --sidebar-primary: 180 196 151;
-    --sidebar-primary-foreground: 26 31 19;
-    --sidebar-accent: 42 48 35;
-    --sidebar-accent-foreground: 233 236 220;
-    --sidebar-border: 74 85 55;
-    --sidebar-ring: 180 196 151;
-  }
 }
 
 @layer base {
@@ -98,36 +59,30 @@
   body {
     @apply bg-background text-foreground font-sans;
     color: #252525;
+    background-color: #f7f7f7;
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* Prevent zoom on iOS */
     -webkit-text-size-adjust: 100%;
-    /* Prevent scrolling bounce on iOS */
     overscroll-behavior: none;
   }
 
   html {
     scroll-behavior: smooth;
-    /* Prevent zoom on iOS */
     -webkit-text-size-adjust: 100%;
   }
 
-  /* Prevent iOS zoom on form inputs */
   input, select, textarea {
     font-size: 16px;
   }
 
-  /* Default text color */
   h1, h2, h3, h4, h5, h6, p, span, div {
     color: #252525;
   }
 
-  /* Link and clickable styles */
   a, button[role="link"], .clickable {
     color: #945BD9;
     font-weight: 600;
   }
 
-  /* CTA Button styles */
   .cta-button {
     background: linear-gradient(135deg, #A961FF 0%, #6B17AB 100%);
     color: #ffffff;
@@ -142,7 +97,6 @@
   }
 }
 
-/* Custom scrollbar for better mobile experience */
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -159,13 +113,11 @@
   @apply bg-primary/50;
 }
 
-/* Smooth transitions for interactive elements */
 @layer components {
   .glass-effect {
-    @apply backdrop-blur-md bg-white/80 dark:bg-black/20;
+    @apply backdrop-blur-md bg-white/80;
   }
 
-  /* Mobile-specific styles */
   .mobile-safe-area {
     padding-bottom: env(safe-area-inset-bottom);
     padding-top: env(safe-area-inset-top);
@@ -173,7 +125,6 @@
     padding-right: env(safe-area-inset-right);
   }
 
-  /* Prevent text selection on mobile for better UX */
   .no-select {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -182,7 +133,6 @@
     -webkit-touch-callout: none;
   }
 
-  /* Updated color palette classes */
   .bg-palette-purple {
     background-color: #7C4585;
   }
@@ -196,19 +146,18 @@
   }
   
   .text-palette-purple-dark {
-    color: #4A2951;
+    color: #ffffff;
   }
   
   .text-palette-pink-dark {
-    color: #7B345A;
+    color: #ffffff;
   }
   
   .text-palette-orange-dark {
-    color: #B8803B;
+    color: #ffffff;
   }
 }
 
-/* PWA specific styles */
 @media (display-mode: standalone) {
   body {
     padding-top: env(safe-area-inset-top);

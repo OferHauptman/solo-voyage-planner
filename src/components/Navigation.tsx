@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Calendar, Map, MapPin, Train } from 'lucide-react';
+import { Calendar, MapPin, Train } from 'lucide-react';
 
 interface NavigationProps {
   activeTab: string;
@@ -10,7 +10,6 @@ interface NavigationProps {
 
 const tabs = [
   { id: 'timeline', label: 'Timeline', icon: Calendar },
-  { id: 'map', label: 'Map', icon: Map },
   { id: 'places', label: 'Places', icon: MapPin },
   { id: 'transport', label: 'Travel', icon: Train }
 ];

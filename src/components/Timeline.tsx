@@ -3,48 +3,46 @@ import React from 'react';
 import { format, parseISO } from 'date-fns';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
+import { Music, Coffee, Wine, Gamepad2, ShoppingBag, Camera, Train, Hotel, Utensils, Beer } from 'lucide-react';
 
 const categoryColors = {
-  concert: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  cafe: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  bar: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
-  gaming: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  shopping: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  sightseeing: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
-  transport: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  accommodation: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
-  restaurant: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  pub: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20'
+  concert: 'bg-palette-pink text-palette-pink-dark',
+  cafe: 'bg-palette-orange text-palette-orange-dark',
+  bar: 'bg-palette-purple text-palette-purple-dark',
+  gaming: 'bg-palette-orange text-palette-orange-dark',
+  shopping: 'bg-palette-pink text-palette-pink-dark',
+  sightseeing: 'bg-palette-purple text-palette-purple-dark',
+  transport: 'bg-palette-orange text-palette-orange-dark',
+  accommodation: 'bg-palette-purple text-palette-purple-dark',
+  restaurant: 'bg-palette-pink text-palette-pink-dark',
+  pub: 'bg-palette-purple text-palette-purple-dark'
 };
 
 const categoryIcons = {
-  concert: '🎵',
-  cafe: '☕',
-  bar: '🍸',
-  gaming: '🎮',
-  shopping: '🛍️',
-  sightseeing: '🏛️',
-  transport: '🚂',
-  accommodation: '🏨',
-  restaurant: '🍽️',
-  pub: '🍺'
+  concert: Music,
+  cafe: Coffee,
+  bar: Wine,
+  gaming: Gamepad2,
+  shopping: ShoppingBag,
+  sightseeing: Camera,
+  transport: Train,
+  accommodation: Hotel,
+  restaurant: Utensils,
+  pub: Beer
 };
 
 const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activity, isLast }) => {
+  const IconComponent = categoryIcons[activity.category];
+  
   return (
     <div className="flex items-start space-x-4 pb-6">
       <div className="flex flex-col items-center">
-        <div className={cn(
-          "w-10 h-10 rounded-full flex items-center justify-center text-lg border-2 shadow-lg backdrop-blur-sm",
-          categoryColors[activity.category]
-        )}>
-          {categoryIcons[activity.category]}
-        </div>
+        <div className="w-2 h-2 rounded-full bg-primary mt-4" />
         {!isLast && <div className="w-0.5 h-8 bg-gradient-to-b from-border to-transparent mt-2" />}
       </div>
       
       <div className="flex-1 min-w-0">
-        <div className="p-5 rounded-2xl shadow-lg backdrop-blur-sm border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
+        <div className="p-5 rounded-2xl shadow-sm border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <h3 className="font-semibold text-base mb-1" style={{ color: '#252525' }}>{activity.name}</h3>
@@ -75,10 +73,11 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
               )}
             </div>
             <span className={cn(
-              "text-xs px-2.5 py-1 rounded-full border font-medium ml-3 flex-shrink-0",
+              "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 flex items-center space-x-1",
               categoryColors[activity.category]
             )}>
-              {activity.category}
+              <IconComponent size={12} />
+              <span>{activity.category}</span>
             </span>
           </div>
         </div>
@@ -90,16 +89,9 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
 const Timeline: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-3" style={{ color: '#252525' }}>
-          {tripData.title}
-        </h1>
-        <p className="font-medium text-lg" style={{ color: '#945BD9' }}>{tripData.dates}</p>
-      </div>
-
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-10">
-          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-lg border border-[#ececec] z-30" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+          <div className="sticky top-4 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-sm border border-[#ececec] z-30" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
             <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
               {format(parseISO(day.date), 'EEEE, MMMM d')}
             </h2>
