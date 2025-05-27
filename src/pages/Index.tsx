@@ -28,7 +28,7 @@ const Index = () => {
 
   return (
     <ThemeProvider defaultTheme="light" storageKey="trip-app-theme">
-      <div className="min-h-screen transition-all duration-500" style={{ backgroundColor: '#fafafa' }}>
+      <div className="min-h-screen transition-all duration-500" style={{ backgroundColor: '#f7f7f7' }}>
         {/* Header */}
         <header className="glass-effect border-b border-border/50 backdrop-blur-xl sticky top-0 z-40" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
           <div className="max-w-2xl mx-auto px-4 py-4">

@@ -1,11 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 250 250 250;
+    --background: 247 247 247;
     --foreground: 37 37 37;
 
     --card: 255 255 255;
@@ -43,6 +42,11 @@
     --sidebar-accent-foreground: 37 37 37;
     --sidebar-border: 236 236 236;
     --sidebar-ring: 148 91 217;
+
+    /* New color palette */
+    --yellow: 255 233 154;
+    --orange: 255 213 134;
+    --pink: 255 170 170;
   }
 
   .dark {
@@ -179,6 +183,31 @@
     -ms-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
+  }
+
+  /* New color palette classes */
+  .bg-palette-yellow {
+    background-color: #FFE99A;
+  }
+  
+  .bg-palette-orange {
+    background-color: #FFD586;
+  }
+  
+  .bg-palette-pink {
+    background-color: #FFAAAA;
+  }
+  
+  .text-palette-yellow-dark {
+    color: #D4B85C;
+  }
+  
+  .text-palette-orange-dark {
+    color: #D4A548;
+  }
+  
+  .text-palette-pink-dark {
+    color: #D47272;
   }
 }
 

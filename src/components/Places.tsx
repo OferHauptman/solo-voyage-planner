@@ -1,19 +1,18 @@
-
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
 
 const categoryColors = {
-  concert: 'bg-purple-500/10 text-purple-700 border-purple-200 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/30',
-  cafe: 'bg-amber-500/10 text-amber-700 border-amber-200 dark:bg-amber-500/20 dark:text-amber-300 dark:border-amber-500/30',
-  bar: 'bg-red-500/10 text-red-700 border-red-200 dark:bg-red-500/20 dark:text-red-300 dark:border-red-500/30',
-  gaming: 'bg-green-500/10 text-green-700 border-green-200 dark:bg-green-500/20 dark:text-green-300 dark:border-green-500/30',
-  shopping: 'bg-blue-500/10 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-300 dark:border-blue-500/30',
-  sightseeing: 'bg-indigo-500/10 text-indigo-700 border-indigo-200 dark:bg-indigo-500/20 dark:text-indigo-300 dark:border-indigo-500/30',
-  transport: 'bg-gray-500/10 text-gray-700 border-gray-200 dark:bg-gray-500/20 dark:text-gray-300 dark:border-gray-500/30',
-  accommodation: 'bg-orange-500/10 text-orange-700 border-orange-200 dark:bg-orange-500/20 dark:text-orange-300 dark:border-orange-500/30',
-  restaurant: 'bg-emerald-500/10 text-emerald-700 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-300 dark:border-emerald-500/30',
-  pub: 'bg-rose-500/10 text-rose-700 border-rose-200 dark:bg-rose-500/20 dark:text-rose-300 dark:border-rose-500/30'
+  concert: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
+  cafe: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
+  bar: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  gaming: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
+  shopping: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
+  sightseeing: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  transport: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
+  accommodation: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  restaurant: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
+  pub: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20'
 };
 
 const categoryIcons = {
