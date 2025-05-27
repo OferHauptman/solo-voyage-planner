@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
@@ -28,7 +29,7 @@ const categoryIcons = {
   pub: '🍺'
 };
 
-// Mock map component since we don't have actual map integration
+// Mock map component with grey Google Maps style
 const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
   const [selectedPin, setSelectedPin] = useState<Activity | null>(null);
 
@@ -37,23 +38,32 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
   const antwerpActivities = activities.filter(a => a.location === 'Antwerp' && a.coordinates);
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg overflow-hidden">
-      {/* Mock map areas */}
-      <div className="h-96 relative">
+    <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden">
+      {/* Mock Google Maps grey style */}
+      <div className="h-96 relative bg-gray-200">
+        {/* Grid pattern to simulate map */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="grid grid-cols-8 grid-rows-6 h-full">
+            {Array.from({ length: 48 }).map((_, i) => (
+              <div key={i} className="border border-gray-300"></div>
+            ))}
+          </div>
+        </div>
+
         {/* London section */}
-        <div className="absolute top-4 left-4 w-32 h-32 bg-travel-blue/20 rounded-lg border-2 border-travel-blue border-dashed flex items-center justify-center">
+        <div className="absolute top-4 left-4 w-32 h-32 bg-gray-300/30 rounded-lg border-2 border-gray-400 border-dashed flex items-center justify-center">
           <div className="text-center">
             <span className="block text-2xl mb-1">🇬🇧</span>
-            <span className="text-sm font-semibold text-travel-navy">London</span>
+            <span className="text-sm font-semibold text-gray-700">London</span>
             <span className="block text-xs text-gray-600">Jun 5-8</span>
           </div>
         </div>
 
         {/* Antwerp section */}
-        <div className="absolute bottom-4 right-4 w-32 h-32 bg-travel-orange/20 rounded-lg border-2 border-travel-orange border-dashed flex items-center justify-center">
+        <div className="absolute bottom-4 right-4 w-32 h-32 bg-gray-300/30 rounded-lg border-2 border-gray-400 border-dashed flex items-center justify-center">
           <div className="text-center">
             <span className="block text-2xl mb-1">🇧🇪</span>
-            <span className="text-sm font-semibold text-travel-navy">Antwerp</span>
+            <span className="text-sm font-semibold text-gray-700">Antwerp</span>
             <span className="block text-xs text-gray-600">Jun 9-11</span>
           </div>
         </div>
@@ -64,7 +74,7 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
             key={activity.id}
             onClick={() => setSelectedPin(activity)}
             className={cn(
-              "absolute w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-xs transition-transform duration-200 hover:scale-110",
+              "absolute w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-xs transition-transform duration-200",
               categoryColors[activity.category]
             )}
             style={{
@@ -82,7 +92,7 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
             key={activity.id}
             onClick={() => setSelectedPin(activity)}
             className={cn(
-              "absolute w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-xs transition-transform duration-200 hover:scale-110",
+              "absolute w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-xs transition-transform duration-200",
               categoryColors[activity.category]
             )}
             style={{
@@ -98,7 +108,7 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
         <svg className="absolute inset-0 w-full h-full pointer-events-none">
           <path
             d="M 140 80 Q 200 150 260 280"
-            stroke="#3b82f6"
+            stroke="#6b7280"
             strokeWidth="2"
             strokeDasharray="5,5"
             fill="none"
@@ -125,7 +135,7 @@ const MapView: React.FC<{ activities: Activity[] }> = ({ activities }) => {
                 <p className="text-gray-600 text-sm mb-1">{selectedPin.address}</p>
               )}
               {selectedPin.time && (
-                <p className="text-travel-blue font-medium text-sm">{selectedPin.time}</p>
+                <p className="text-purple-600 font-medium text-sm">{selectedPin.time}</p>
               )}
             </div>
             <button
@@ -150,8 +160,8 @@ const Map: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-travel-navy mb-2">Trip Map</h1>
-        <p className="text-gray-600">Your journey through London & Antwerp</p>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#252525' }}>Trip Map</h1>
+        <p style={{ color: '#252525', opacity: 0.7 }}>Your journey through London & Antwerp</p>
       </div>
 
       <MapView activities={allActivities} />

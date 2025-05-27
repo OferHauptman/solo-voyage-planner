@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,10 +44,10 @@
     --sidebar-border: 236 236 236;
     --sidebar-ring: 148 91 217;
 
-    /* New color palette */
-    --yellow: 255 233 154;
-    --orange: 255 213 134;
-    --pink: 255 170 170;
+    /* Updated color palette */
+    --purple: 124 69 133;
+    --pink: 201 87 146;
+    --orange: 248 181 95;
   }
 
   .dark {
@@ -160,10 +161,6 @@
 
 /* Smooth transitions for interactive elements */
 @layer components {
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-  }
-  
   .glass-effect {
     @apply backdrop-blur-md bg-white/80 dark:bg-black/20;
   }
@@ -185,29 +182,29 @@
     -webkit-touch-callout: none;
   }
 
-  /* New color palette classes */
-  .bg-palette-yellow {
-    background-color: #FFE99A;
-  }
-  
-  .bg-palette-orange {
-    background-color: #FFD586;
+  /* Updated color palette classes */
+  .bg-palette-purple {
+    background-color: #7C4585;
   }
   
   .bg-palette-pink {
-    background-color: #FFAAAA;
+    background-color: #C95792;
   }
   
-  .text-palette-yellow-dark {
-    color: #D4B85C;
+  .bg-palette-orange {
+    background-color: #F8B55F;
   }
   
-  .text-palette-orange-dark {
-    color: #D4A548;
+  .text-palette-purple-dark {
+    color: #4A2951;
   }
   
   .text-palette-pink-dark {
-    color: #D47272;
+    color: #7B345A;
+  }
+  
+  .text-palette-orange-dark {
+    color: #B8803B;
   }
 }
 

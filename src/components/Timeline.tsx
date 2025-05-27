@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { format, parseISO } from 'date-fns';
 import { tripData, Activity } from '@/data/tripData';
@@ -5,15 +6,15 @@ import { cn } from '@/lib/utils';
 
 const categoryColors = {
   concert: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  cafe: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
-  bar: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  gaming: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
+  cafe: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  bar: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
+  gaming: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
   shopping: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  sightseeing: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  transport: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
-  accommodation: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  sightseeing: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
+  transport: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  accommodation: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
   restaurant: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  pub: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20'
+  pub: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20'
 };
 
 const categoryIcons = {
@@ -34,7 +35,7 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
     <div className="flex items-start space-x-4 pb-6">
       <div className="flex flex-col items-center">
         <div className={cn(
-          "w-10 h-10 rounded-full flex items-center justify-center text-lg border-2 shadow-lg backdrop-blur-sm transition-transform hover:scale-110",
+          "w-10 h-10 rounded-full flex items-center justify-center text-lg border-2 shadow-lg backdrop-blur-sm",
           categoryColors[activity.category]
         )}>
           {categoryIcons[activity.category]}
@@ -43,7 +44,7 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
       </div>
       
       <div className="flex-1 min-w-0">
-        <div className="p-5 rounded-2xl shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
+        <div className="p-5 rounded-2xl shadow-lg backdrop-blur-sm border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <h3 className="font-semibold text-base mb-1" style={{ color: '#252525' }}>{activity.name}</h3>
@@ -98,7 +99,7 @@ const Timeline: React.FC = () => {
 
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-10">
-          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-lg border border-[#ececec]" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-lg border border-[#ececec] z-30" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
             <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
               {format(parseISO(day.date), 'EEEE, MMMM d')}
             </h2>

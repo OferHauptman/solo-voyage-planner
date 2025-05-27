@@ -1,18 +1,19 @@
+
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
 
 const categoryColors = {
   concert: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  cafe: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
-  bar: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  gaming: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
+  cafe: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  bar: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
+  gaming: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
   shopping: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  sightseeing: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
-  transport: 'bg-palette-yellow text-palette-yellow-dark border-palette-yellow-dark/20',
-  accommodation: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  sightseeing: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
+  transport: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20',
+  accommodation: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20',
   restaurant: 'bg-palette-pink text-palette-pink-dark border-palette-pink-dark/20',
-  pub: 'bg-palette-orange text-palette-orange-dark border-palette-orange-dark/20'
+  pub: 'bg-palette-purple text-palette-purple-dark border-palette-purple-dark/20'
 };
 
 const categoryIcons = {
@@ -42,7 +43,7 @@ const categories = [
 
 const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   return (
-    <div className="group rounded-2xl shadow-lg hover:shadow-xl overflow-hidden backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
+    <div className="group rounded-2xl shadow-lg overflow-hidden backdrop-blur-sm border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center space-x-3">
@@ -129,10 +130,10 @@ const Places: React.FC = () => {
             key={category.id}
             onClick={() => setSelectedCategory(category.id)}
             className={cn(
-              "flex items-center space-x-2 px-4 py-3 rounded-2xl whitespace-nowrap transition-all duration-300 shadow-md hover:shadow-lg border border-[#ececec]",
+              "flex items-center space-x-2 px-4 py-3 rounded-2xl whitespace-nowrap transition-all duration-300 shadow-md border border-[#ececec]",
               selectedCategory === category.id
                 ? "shadow-lg scale-105"
-                : "hover:bg-primary/5"
+                : ""
             )}
             style={selectedCategory === category.id 
               ? { backgroundColor: '#945BD9', color: '#ffffff' }
