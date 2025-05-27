@@ -21,7 +21,7 @@ const categoryColors = {
 
 const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   return (
-    <div className="mb-1">
+    <div className="mb-2">
       <div className="mx-5 p-4 rounded-xl bg-white border border-[#ececec] shadow-sm">
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -60,9 +60,18 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
 
 const Timeline: React.FC = () => {
   const [openDays, setOpenDays] = useState<Record<string, boolean>>({});
+  const [activeTap, setActiveTap] = useState<string | null>(null);
 
   const toggleDay = (date: string) => {
     setOpenDays(prev => ({ ...prev, [date]: !prev[date] }));
+  };
+
+  const handleTapStart = (date: string) => {
+    setActiveTap(date);
+  };
+
+  const handleTapEnd = () => {
+    setTimeout(() => setActiveTap(null), 100);
   };
 
   return (
@@ -73,13 +82,20 @@ const Timeline: React.FC = () => {
             <div className="sticky top-0 z-30 bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7] to-transparent">
               <CollapsibleTrigger 
                 onClick={() => toggleDay(day.date)}
-                className="w-screen bg-white/95 backdrop-blur-sm flex items-center justify-between hover:bg-white/100 transition-colors border-b border-[#ececec]"
+                onMouseDown={() => handleTapStart(day.date)}
+                onMouseUp={handleTapEnd}
+                onMouseLeave={handleTapEnd}
+                onTouchStart={() => handleTapStart(day.date)}
+                onTouchEnd={handleTapEnd}
+                className="w-screen flex items-center justify-between hover:bg-white/100 transition-all duration-200 border-b border-[#ececec]"
                 style={{ 
                   marginLeft: 'calc(-50vw + 50%)',
                   paddingLeft: 'calc(50vw - 50% + 20px)',
                   paddingRight: 'calc(50vw - 50% + 20px)',
                   paddingTop: '32px',
-                  paddingBottom: '16px'
+                  paddingBottom: '16px',
+                  backgroundColor: activeTap === day.date ? '#f7f7f7' : 'rgba(255, 255, 255, 0.95)',
+                  backdropFilter: 'blur(4px)'
                 }}
               >
                 <div className="text-left">

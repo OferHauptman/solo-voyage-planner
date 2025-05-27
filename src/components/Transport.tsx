@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { tripData } from '@/data/tripData';
 import { Plane, Train, Hotel } from 'lucide-react';
@@ -15,8 +16,8 @@ interface TransportItem {
 const TransportCard: React.FC<{ title: string; items: TransportItem[]; icon?: React.ComponentType<any> }> = ({ title, items, icon: IconComponent }) => {
   return (
     <div className="rounded-lg shadow-sm overflow-hidden mb-6 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
-      <div className="px-4 py-3 flex items-center space-x-2" style={{ backgroundColor: '#945BD9' }}>
-        {IconComponent && <IconComponent size={16} />}
+      <div className="px-4 py-3 flex items-center space-x-2" style={{ backgroundColor: '#252525' }}>
+        {IconComponent && <IconComponent size={16} color="#ffffff" />}
         <h2 className="font-semibold" style={{ color: '#ffffff' }}>{title}</h2>
       </div>
       <div className="p-4 space-y-4">
