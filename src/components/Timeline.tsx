@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { tripData, Activity } from '@/data/tripData';
@@ -63,9 +62,9 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
             )}
           </div>
           <span className={cn(
-            "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 flex items-center space-x-1",
+            "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 flex items-center space-x-1 text-white",
             categoryColors[activity.category]
-          )} style={{ color: '#ffffff' }}>
+          )}>
             <IconComponent size={12} />
             <span>{activity.category}</span>
           </span>
@@ -118,11 +117,7 @@ const Timeline: React.FC = () => {
             <CollapsibleContent>
               <div className="space-y-0 pt-2">
                 {day.activities.map((activity, activityIndex) => (
-                  <div
-                    key={activity.id}
-                    className="animate-slide-up"
-                    style={{ animationDelay: `${(dayIndex * 200) + (activityIndex * 100)}ms` }}
-                  >
+                  <div key={activity.id}>
                     <ActivityCard activity={activity} />
                   </div>
                 ))}
