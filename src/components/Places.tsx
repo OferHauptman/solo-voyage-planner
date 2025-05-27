@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
@@ -42,7 +43,7 @@ const categories = [
 
 const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   return (
-    <div className="group bg-card rounded-2xl shadow-lg hover:shadow-xl border border-border/50 overflow-hidden backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
+    <div className="group bg-card rounded-2xl shadow-lg hover:shadow-xl overflow-hidden backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]">
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center space-x-3">
@@ -129,10 +130,10 @@ const Places: React.FC = () => {
             key={category.id}
             onClick={() => setSelectedCategory(category.id)}
             className={cn(
-              "flex items-center space-x-2 px-4 py-3 rounded-2xl border whitespace-nowrap transition-all duration-300 shadow-md hover:shadow-lg",
+              "flex items-center space-x-2 px-4 py-3 rounded-2xl whitespace-nowrap transition-all duration-300 shadow-md hover:shadow-lg border border-[#ececec]",
               selectedCategory === category.id
-                ? "bg-primary text-primary-foreground border-primary shadow-lg scale-105"
-                : "bg-card text-muted-foreground border-border hover:border-primary hover:text-primary hover:bg-primary/5"
+                ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                : "bg-card text-muted-foreground hover:text-primary hover:bg-primary/5"
             )}
           >
             <span className="text-lg">{category.icon}</span>

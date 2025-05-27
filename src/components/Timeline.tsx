@@ -44,7 +44,7 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
       </div>
       
       <div className="flex-1 min-w-0">
-        <div className="p-5 rounded-2xl border bg-card shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
+        <div className="p-5 rounded-2xl bg-card shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <h3 className="font-semibold text-foreground text-base mb-1">{activity.name}</h3>
@@ -99,7 +99,7 @@ const Timeline: React.FC = () => {
 
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-10">
-          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl border border-border/50 px-4 shadow-lg">
+          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-lg border border-[#ececec]">
             <h2 className="text-xl font-bold text-foreground">
               {format(parseISO(day.date), 'EEEE, MMMM d')}
             </h2>

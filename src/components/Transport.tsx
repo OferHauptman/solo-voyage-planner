@@ -5,13 +5,13 @@ import { format, parseISO } from 'date-fns';
 
 const TransportCard: React.FC<{ title: string; items: any[] }> = ({ title, items }) => {
   return (
-    <div className="bg-white dark:bg-card rounded-lg shadow-lg hover:shadow-xl border border-gray-200 dark:border-border/50 overflow-hidden mb-6 transition-all duration-300">
+    <div className="bg-white dark:bg-card rounded-lg shadow-lg hover:shadow-xl overflow-hidden mb-6 transition-all duration-300 border border-[#ececec]">
       <div className="bg-travel-navy text-white px-4 py-3">
         <h2 className="font-semibold">{title}</h2>
       </div>
       <div className="p-4 space-y-4">
         {items.map((item, index) => (
-          <div key={item.id || index} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-muted/50 rounded-lg shadow-sm">
+          <div key={item.id || index} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-muted/50 rounded-lg shadow-sm border border-[#ececec]">
             <div className="w-8 h-8 bg-travel-blue rounded-full flex items-center justify-center">
               <span className="text-white text-sm">🚂</span>
             </div>
@@ -68,7 +68,7 @@ const Transport: React.FC = () => {
       <TransportCard title="🎫 General Transport" items={tripData.transport} />
 
       {/* Travel Tips */}
-      <div className="bg-gradient-to-r from-travel-blue to-travel-navy rounded-lg p-6 text-white shadow-lg">
+      <div className="bg-gradient-to-r from-travel-blue to-travel-navy rounded-lg p-6 text-white shadow-lg border border-[#ececec]">
         <h3 className="font-semibold text-lg mb-4">✈️ Travel Tips</h3>
         <div className="space-y-3">
           <div className="flex items-start space-x-3">
