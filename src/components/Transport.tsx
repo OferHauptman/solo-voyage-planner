@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { tripData } from '@/data/tripData';
 import { Plane, Train, Hotel } from 'lucide-react';
@@ -30,7 +29,6 @@ const TransportCard: React.FC<{ title: string; items: TransportItem[]; icon?: Re
               )}
               {item.address && (
                 <p className="text-sm mt-1 flex items-center" style={{ color: '#252525', opacity: 0.6 }}>
-                  <span className="mr-1">📍</span>
                   {item.address}
                 </p>
               )}
@@ -47,11 +45,6 @@ const TransportCard: React.FC<{ title: string; items: TransportItem[]; icon?: Re
                     </span>
                   )}
                 </div>
-                {item.price && (
-                  <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: '#945BD9', color: '#ffffff' }}>
-                    {item.price}
-                  </span>
-                )}
               </div>
             </div>
           </div>

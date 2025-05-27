@@ -1,8 +1,9 @@
+
 import React, { useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
-import { Music, Coffee, Wine, Gamepad2, ShoppingBag, Camera, Train, Hotel, Utensils, Beer, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 const categoryColors = {
@@ -18,22 +19,7 @@ const categoryColors = {
   pub: 'bg-palette-purple'
 };
 
-const categoryIcons = {
-  concert: Music,
-  cafe: Coffee,
-  bar: Wine,
-  gaming: Gamepad2,
-  shopping: ShoppingBag,
-  sightseeing: Camera,
-  transport: Train,
-  accommodation: Hotel,
-  restaurant: Utensils,
-  pub: Beer
-};
-
 const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
-  const IconComponent = categoryIcons[activity.category];
-  
   return (
     <div className="mb-1">
       <div className="mx-5 p-4 rounded-xl bg-white border border-[#ececec] shadow-sm">
@@ -48,7 +34,6 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
             )}
             {activity.address && (
               <p className="text-sm mb-2 flex items-center" style={{ color: '#252525', opacity: 0.7 }}>
-                <span className="mr-1">📍</span>
                 {activity.address}
               </p>
             )}
@@ -62,11 +47,10 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
             )}
           </div>
           <span className={cn(
-            "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 flex items-center space-x-1 text-white",
+            "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 text-white",
             categoryColors[activity.category]
           )}>
-            <IconComponent size={12} />
-            <span>{activity.category}</span>
+            {activity.category}
           </span>
         </div>
       </div>
