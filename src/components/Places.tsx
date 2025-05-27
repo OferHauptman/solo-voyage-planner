@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
@@ -43,21 +42,7 @@ const categories = [
 
 const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   return (
-    <div className="group bg-card rounded-2xl shadow-sm border border-border/50 overflow-hidden card-hover backdrop-blur-sm">
-      <div className={cn(
-        "h-1.5 bg-gradient-to-r",
-        activity.category === 'concert' && 'from-purple-400 to-purple-600',
-        activity.category === 'cafe' && 'from-amber-400 to-amber-600',
-        activity.category === 'bar' && 'from-red-400 to-red-600',
-        activity.category === 'gaming' && 'from-green-400 to-green-600',
-        activity.category === 'shopping' && 'from-blue-400 to-blue-600',
-        activity.category === 'sightseeing' && 'from-indigo-400 to-indigo-600',
-        activity.category === 'transport' && 'from-gray-400 to-gray-600',
-        activity.category === 'accommodation' && 'from-orange-400 to-orange-600',
-        activity.category === 'restaurant' && 'from-emerald-400 to-emerald-600',
-        activity.category === 'pub' && 'from-rose-400 to-rose-600'
-      )} />
-      
+    <div className="group bg-card rounded-2xl shadow-lg hover:shadow-xl border border-border/50 overflow-hidden backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center space-x-3">
@@ -144,7 +129,7 @@ const Places: React.FC = () => {
             key={category.id}
             onClick={() => setSelectedCategory(category.id)}
             className={cn(
-              "flex items-center space-x-2 px-4 py-3 rounded-2xl border whitespace-nowrap transition-all duration-300 shadow-sm",
+              "flex items-center space-x-2 px-4 py-3 rounded-2xl border whitespace-nowrap transition-all duration-300 shadow-md hover:shadow-lg",
               selectedCategory === category.id
                 ? "bg-primary text-primary-foreground border-primary shadow-lg scale-105"
                 : "bg-card text-muted-foreground border-border hover:border-primary hover:text-primary hover:bg-primary/5"

@@ -35,7 +35,7 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
     <div className="flex items-start space-x-4 pb-6">
       <div className="flex flex-col items-center">
         <div className={cn(
-          "w-10 h-10 rounded-full flex items-center justify-center text-lg border-2 shadow-sm backdrop-blur-sm transition-transform hover:scale-110",
+          "w-10 h-10 rounded-full flex items-center justify-center text-lg border-2 shadow-lg backdrop-blur-sm transition-transform hover:scale-110",
           categoryColors[activity.category]
         )}>
           {categoryIcons[activity.category]}
@@ -44,19 +44,7 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
       </div>
       
       <div className="flex-1 min-w-0">
-        <div className={cn(
-          "p-5 rounded-2xl border bg-card shadow-sm card-hover backdrop-blur-sm",
-          activity.category === 'concert' && 'border-l-4 border-l-purple-400',
-          activity.category === 'cafe' && 'border-l-4 border-l-amber-400',
-          activity.category === 'bar' && 'border-l-4 border-l-red-400',
-          activity.category === 'gaming' && 'border-l-4 border-l-green-400',
-          activity.category === 'shopping' && 'border-l-4 border-l-blue-400',
-          activity.category === 'sightseeing' && 'border-l-4 border-l-indigo-400',
-          activity.category === 'transport' && 'border-l-4 border-l-gray-400',
-          activity.category === 'accommodation' && 'border-l-4 border-l-orange-400',
-          activity.category === 'restaurant' && 'border-l-4 border-l-emerald-400',
-          activity.category === 'pub' && 'border-l-4 border-l-rose-400'
-        )}>
+        <div className="p-5 rounded-2xl border bg-card shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <h3 className="font-semibold text-foreground text-base mb-1">{activity.name}</h3>
@@ -111,7 +99,7 @@ const Timeline: React.FC = () => {
 
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-10">
-          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl border border-border/50 px-4">
+          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl border border-border/50 px-4 shadow-lg">
             <h2 className="text-xl font-bold text-foreground">
               {format(parseISO(day.date), 'EEEE, MMMM d')}
             </h2>
