@@ -1,20 +1,19 @@
-
 import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
 import { Music, Coffee, Wine, Gamepad2, ShoppingBag, Camera, Train, Hotel, Utensils, Beer } from 'lucide-react';
 
 const categoryColors = {
-  concert: 'bg-palette-pink text-white',
-  cafe: 'bg-palette-orange text-white',
-  bar: 'bg-palette-purple text-white',
-  gaming: 'bg-palette-orange text-white',
-  shopping: 'bg-palette-pink text-white',
-  sightseeing: 'bg-palette-purple text-white',
-  transport: 'bg-palette-orange text-white',
-  accommodation: 'bg-palette-purple text-white',
-  restaurant: 'bg-palette-pink text-white',
-  pub: 'bg-palette-purple text-white'
+  concert: 'bg-palette-pink',
+  cafe: 'bg-palette-orange',
+  bar: 'bg-palette-purple',
+  gaming: 'bg-palette-orange',
+  shopping: 'bg-palette-pink',
+  sightseeing: 'bg-palette-purple',
+  transport: 'bg-palette-orange',
+  accommodation: 'bg-palette-purple',
+  restaurant: 'bg-palette-pink',
+  pub: 'bg-palette-purple'
 };
 
 const categoryIcons = {
@@ -49,7 +48,7 @@ const PlaceCard: React.FC<{ activity: Activity; isSelected: boolean }> = ({ acti
           </h3>
           <span className={cn(
             "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex items-center space-x-1",
-            categoryColors[activity.category]
+            categoryColors[activity.category] + " text-white"
           )}>
             <IconComponent size={12} />
             <span>{activity.category}</span>
