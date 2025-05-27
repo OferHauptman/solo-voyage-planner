@@ -3,19 +3,6 @@ import React from 'react';
 import { tripData } from '@/data/tripData';
 import { Plane, Train, Hotel } from 'lucide-react';
 
-const categoryColors = {
-  concert: 'bg-palette-pink',
-  cafe: 'bg-palette-orange',
-  bar: 'bg-palette-purple',
-  gaming: 'bg-palette-orange',
-  shopping: 'bg-palette-pink',
-  sightseeing: 'bg-palette-purple',
-  transport: 'bg-palette-orange',
-  accommodation: 'bg-palette-purple',
-  restaurant: 'bg-palette-pink',
-  pub: 'bg-palette-purple'
-};
-
 interface TransportItem {
   id?: string;
   name: string;
@@ -24,7 +11,6 @@ interface TransportItem {
   time?: string;
   price?: string;
   date?: string;
-  category?: string;
 }
 
 const TransportCard: React.FC<{ title: string; items: TransportItem[]; icon?: React.ComponentType<any> }> = ({ title, items, icon: IconComponent }) => {
@@ -38,14 +24,7 @@ const TransportCard: React.FC<{ title: string; items: TransportItem[]; icon?: Re
         {items.map((item, index) => (
           <div key={item.id || index} className="flex items-start space-x-3 p-3 rounded-lg shadow-sm border border-[#ececec]" style={{ backgroundColor: '#fafafa' }}>
             <div className="flex-1">
-              <div className="flex items-start justify-between mb-2">
-                <h3 className="font-semibold flex-1" style={{ color: '#252525' }}>{item.name}</h3>
-                {item.category && (
-                  <span className={`text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 text-white ${categoryColors[item.category] || 'bg-palette-orange'}`}>
-                    {item.category}
-                  </span>
-                )}
-              </div>
+              <h3 className="font-semibold" style={{ color: '#252525' }}>{item.name}</h3>
               {item.description && (
                 <p className="text-sm mt-1" style={{ color: '#252525', opacity: 0.7 }}>{item.description}</p>
               )}
@@ -82,14 +61,12 @@ const Transport: React.FC = () => {
     const dayTransport = day.activities.filter(activity => activity.category === 'transport');
     return acc.concat(dayTransport.map(activity => ({
       ...activity,
-      date: day.date,
-      category: 'transport'
+      date: day.date
     })));
   }, [] as any[]);
 
   const enhancedTransport = tripData.transport.map(item => ({
     ...item,
-    category: 'transport',
     date: item.name.includes('Israel to London') ? '2025-06-05' : 
           item.name.includes('London to Antwerp') ? '2025-06-09' :
           item.name.includes('London to Israel') ? '2025-06-11' : undefined,
@@ -110,17 +87,11 @@ const Transport: React.FC = () => {
              activity.name.includes('Flight to Israel') ? 'Heathrow Airport → Ben Gurion Airport' : activity.address
   }));
 
-  const enhancedAccommodations = tripData.accommodations.map(acc => ({
-    ...acc,
-    category: 'accommodation',
-    date: acc.location === 'London' ? 'June 5-9, 2025' : 'June 9-11, 2025'
-  }));
-
   return (
-    <div className="max-w-2xl mx-auto p-4 pb-24" style={{ backgroundColor: '#252525' }}>
+    <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold mb-2" style={{ color: '#ffffff' }}>Travel & Transport</h1>
-        <p style={{ color: '#ffffff', opacity: 0.7 }}>Your complete journey itinerary</p>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#252525' }}>Travel & Transport</h1>
+        <p style={{ color: '#252525', opacity: 0.7 }}>Your complete journey itinerary</p>
       </div>
 
       {/* Flights */}
@@ -143,7 +114,10 @@ const Transport: React.FC = () => {
       {/* Accommodations */}
       <TransportCard 
         title="🏨 Accommodations" 
-        items={enhancedAccommodations}
+        items={tripData.accommodations.map(acc => ({
+          ...acc,
+          date: acc.location === 'London' ? 'June 5-9, 2025' : 'June 9-11, 2025'
+        }))}
         icon={Hotel}
       />
     </div>

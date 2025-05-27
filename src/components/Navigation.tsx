@@ -27,15 +27,15 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }) => {
               className="flex flex-col items-center justify-center py-3 px-4 rounded-2xl transition-all duration-300 min-w-0 flex-1 mx-1 h-full"
             >
               <IconComponent 
-                size={24} 
+                size={20} 
                 className="mb-1 transition-colors duration-200" 
-                color={activeTab === tab.id ? '#252525' : '#959595'}
+                color={activeTab === tab.id ? '#252525' : '#dadada'}
                 fill={activeTab === tab.id ? '#252525' : 'none'}
                 strokeWidth={activeTab === tab.id ? 0 : 1.5}
               />
               <span 
                 className="text-xs font-medium truncate"
-                style={{ color: activeTab === tab.id ? '#252525' : '#959595' }}
+                style={{ color: activeTab === tab.id ? '#252525' : '#dadada' }}
               >
                 {tab.label}
               </span>

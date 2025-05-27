@@ -77,7 +77,7 @@ const Timeline: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto pb-24">
       {tripData.days.map((day, dayIndex) => (
-        <div key={day.date} className="mb-10">
+        <div key={day.date} className="mb-6">
           <Collapsible open={openDays[day.date] ?? true}>
             <div className="sticky top-0 z-30 bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7] to-transparent">
               <CollapsibleTrigger 
@@ -87,19 +87,19 @@ const Timeline: React.FC = () => {
                 onMouseLeave={handleTapEnd}
                 onTouchStart={() => handleTapStart(day.date)}
                 onTouchEnd={handleTapEnd}
-                className="w-screen flex items-center justify-between transition-all duration-200 border-b border-[#ececec]"
+                className="w-screen flex items-center justify-between hover:bg-white/100 transition-all duration-200 border-b border-[#ececec]"
                 style={{ 
                   marginLeft: 'calc(-50vw + 50%)',
                   paddingLeft: 'calc(50vw - 50% + 20px)',
                   paddingRight: 'calc(50vw - 50% + 20px)',
                   paddingTop: '32px',
                   paddingBottom: '16px',
-                  backgroundColor: activeTap === day.date ? '#1a1a1a' : '#252525',
+                  backgroundColor: activeTap === day.date ? '#f7f7f7' : 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(4px)'
                 }}
               >
                 <div className="text-left">
-                  <h2 className="text-xl font-bold" style={{ color: '#ffffff' }}>
+                  <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
                     {format(parseISO(day.date), 'EEEE, MMMM d')}
                   </h2>
                   <p className="font-medium flex items-center mt-1" style={{ color: '#945BD9' }}>
@@ -107,15 +107,15 @@ const Timeline: React.FC = () => {
                   </p>
                 </div>
                 {openDays[day.date] === false ? (
-                  <ChevronDown className="h-5 w-5" style={{ color: '#ffffff' }} />
+                  <ChevronDown className="h-5 w-5" style={{ color: '#252525' }} />
                 ) : (
-                  <ChevronUp className="h-5 w-5" style={{ color: '#ffffff' }} />
+                  <ChevronUp className="h-5 w-5" style={{ color: '#252525' }} />
                 )}
               </CollapsibleTrigger>
             </div>
             
             <CollapsibleContent>
-              <div className="space-y-0 pt-6">
+              <div className="space-y-0 pt-2">
                 {day.activities.map((activity, activityIndex) => (
                   <div key={activity.id}>
                     <ActivityCard activity={activity} />
