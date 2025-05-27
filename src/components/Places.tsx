@@ -43,14 +43,14 @@ const categories = [
 
 const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   return (
-    <div className="group bg-card rounded-2xl shadow-lg hover:shadow-xl overflow-hidden backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]">
+    <div className="group rounded-2xl shadow-lg hover:shadow-xl overflow-hidden backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex items-center space-x-3">
             <div className="text-2xl animate-gentle-bounce">
               {categoryIcons[activity.category]}
             </div>
-            <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+            <h3 className="font-semibold transition-colors" style={{ color: '#252525' }}>
               {activity.name}
             </h3>
           </div>
@@ -63,33 +63,33 @@ const PlaceCard: React.FC<{ activity: Activity }> = ({ activity }) => {
         </div>
         
         {activity.address && (
-          <p className="text-muted-foreground text-sm mb-3 flex items-center">
+          <p className="text-sm mb-3 flex items-center" style={{ color: '#252525', opacity: 0.7 }}>
             <span className="mr-2">📍</span>
             {activity.address}
           </p>
         )}
         
         {activity.description && (
-          <p className="text-foreground/80 text-sm mb-3 leading-relaxed">
+          <p className="text-sm mb-3 leading-relaxed" style={{ color: '#252525', opacity: 0.8 }}>
             {activity.description}
           </p>
         )}
         
         {activity.notes && (
-          <p className="text-muted-foreground text-xs mb-3 italic bg-muted/50 p-2 rounded-lg">
+          <p className="text-xs mb-3 italic bg-muted/50 p-2 rounded-lg" style={{ color: '#252525', opacity: 0.7 }}>
             💭 {activity.notes}
           </p>
         )}
         
         <div className="flex items-center justify-between pt-2">
           {activity.time && (
-            <span className="text-primary font-medium text-sm flex items-center">
+            <span className="font-medium text-sm flex items-center" style={{ color: '#945BD9' }}>
               <span className="mr-1">🕐</span>
               {activity.time}
             </span>
           )}
           {activity.price && (
-            <span className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
+            <span className="text-xs px-3 py-1.5 rounded-full font-medium shadow-sm" style={{ backgroundColor: '#945BD9', color: '#ffffff' }}>
               {activity.price}
             </span>
           )}
@@ -117,10 +117,10 @@ const Places: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-3">
+        <h1 className="text-3xl font-bold mb-3" style={{ color: '#252525' }}>
           Places to Visit
         </h1>
-        <p className="text-muted-foreground">Discover amazing spots on your journey ✨</p>
+        <p style={{ color: '#252525', opacity: 0.7 }}>Discover amazing spots on your journey ✨</p>
       </div>
 
       {/* Category filters */}
@@ -132,9 +132,13 @@ const Places: React.FC = () => {
             className={cn(
               "flex items-center space-x-2 px-4 py-3 rounded-2xl whitespace-nowrap transition-all duration-300 shadow-md hover:shadow-lg border border-[#ececec]",
               selectedCategory === category.id
-                ? "bg-primary text-primary-foreground shadow-lg scale-105"
-                : "bg-card text-muted-foreground hover:text-primary hover:bg-primary/5"
+                ? "shadow-lg scale-105"
+                : "hover:bg-primary/5"
             )}
+            style={selectedCategory === category.id 
+              ? { backgroundColor: '#945BD9', color: '#ffffff' }
+              : { backgroundColor: '#ffffff', color: '#252525' }
+            }
           >
             <span className="text-lg">{category.icon}</span>
             <span className="text-sm font-medium">{category.name}</span>
@@ -157,8 +161,8 @@ const Places: React.FC = () => {
         ) : (
           <div className="text-center py-16">
             <div className="text-6xl mb-4 animate-gentle-bounce">🔍</div>
-            <p className="text-muted-foreground text-lg">No places found in this category</p>
-            <p className="text-muted-foreground/70 text-sm mt-2">Try selecting a different filter</p>
+            <p className="text-lg" style={{ color: '#252525', opacity: 0.7 }}>No places found in this category</p>
+            <p className="text-sm mt-2" style={{ color: '#252525', opacity: 0.5 }}>Try selecting a different filter</p>
           </div>
         )}
       </div>

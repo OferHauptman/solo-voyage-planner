@@ -44,32 +44,32 @@ const ActivityCard: React.FC<{ activity: Activity; isLast: boolean }> = ({ activ
       </div>
       
       <div className="flex-1 min-w-0">
-        <div className="p-5 rounded-2xl bg-card shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]">
+        <div className="p-5 rounded-2xl shadow-lg hover:shadow-xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <h3 className="font-semibold text-foreground text-base mb-1">{activity.name}</h3>
+              <h3 className="font-semibold text-base mb-1" style={{ color: '#252525' }}>{activity.name}</h3>
               {activity.time && (
-                <p className="text-primary font-medium text-sm mb-2 flex items-center">
+                <p className="font-medium text-sm mb-2 flex items-center" style={{ color: '#945BD9' }}>
                   <span className="mr-1">🕐</span>
                   {activity.time}
                 </p>
               )}
               {activity.address && (
-                <p className="text-muted-foreground text-sm mb-2 flex items-center">
+                <p className="text-sm mb-2 flex items-center" style={{ color: '#252525', opacity: 0.7 }}>
                   <span className="mr-1">📍</span>
                   {activity.address}
                 </p>
               )}
               {activity.description && (
-                <p className="text-foreground/80 text-sm mb-3 leading-relaxed">{activity.description}</p>
+                <p className="text-sm mb-3 leading-relaxed" style={{ color: '#252525', opacity: 0.8 }}>{activity.description}</p>
               )}
               {activity.notes && (
-                <p className="text-muted-foreground text-xs mb-3 italic bg-muted/50 p-2 rounded-lg">
+                <p className="text-xs mb-3 italic bg-muted/50 p-2 rounded-lg" style={{ color: '#252525', opacity: 0.7 }}>
                   💭 {activity.notes}
                 </p>
               )}
               {activity.price && (
-                <span className="inline-block bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
+                <span className="inline-block text-xs px-3 py-1.5 rounded-full font-medium shadow-sm" style={{ backgroundColor: '#945BD9', color: '#ffffff' }}>
                   {activity.price}
                 </span>
               )}
@@ -91,19 +91,19 @@ const Timeline: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-3">
+        <h1 className="text-3xl font-bold mb-3" style={{ color: '#252525' }}>
           {tripData.title}
         </h1>
-        <p className="text-primary font-medium text-lg">{tripData.dates}</p>
+        <p className="font-medium text-lg" style={{ color: '#945BD9' }}>{tripData.dates}</p>
       </div>
 
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-10">
-          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-lg border border-[#ececec]">
-            <h2 className="text-xl font-bold text-foreground">
+          <div className="sticky top-20 glass-effect py-4 mb-6 rounded-2xl px-4 shadow-lg border border-[#ececec]" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+            <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
               {format(parseISO(day.date), 'EEEE, MMMM d')}
             </h2>
-            <p className="text-primary font-medium flex items-center mt-1">
+            <p className="font-medium flex items-center mt-1" style={{ color: '#945BD9' }}>
               <span className="mr-1">📍</span>
               {day.location}
             </p>

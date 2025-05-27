@@ -5,30 +5,30 @@ import { format, parseISO } from 'date-fns';
 
 const TransportCard: React.FC<{ title: string; items: any[] }> = ({ title, items }) => {
   return (
-    <div className="bg-white dark:bg-card rounded-lg shadow-lg hover:shadow-xl overflow-hidden mb-6 transition-all duration-300 border border-[#ececec]">
-      <div className="bg-travel-navy text-white px-4 py-3">
-        <h2 className="font-semibold">{title}</h2>
+    <div className="rounded-lg shadow-lg hover:shadow-xl overflow-hidden mb-6 transition-all duration-300 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
+      <div className="px-4 py-3" style={{ backgroundColor: '#945BD9' }}>
+        <h2 className="font-semibold" style={{ color: '#ffffff' }}>{title}</h2>
       </div>
       <div className="p-4 space-y-4">
         {items.map((item, index) => (
-          <div key={item.id || index} className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-muted/50 rounded-lg shadow-sm border border-[#ececec]">
-            <div className="w-8 h-8 bg-travel-blue rounded-full flex items-center justify-center">
-              <span className="text-white text-sm">🚂</span>
+          <div key={item.id || index} className="flex items-start space-x-3 p-3 rounded-lg shadow-sm border border-[#ececec]" style={{ backgroundColor: '#fafafa' }}>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: '#945BD9' }}>
+              <span className="text-sm" style={{ color: '#ffffff' }}>🚂</span>
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold text-gray-900 dark:text-foreground">{item.name}</h3>
+              <h3 className="font-semibold" style={{ color: '#252525' }}>{item.name}</h3>
               {item.description && (
-                <p className="text-gray-600 dark:text-muted-foreground text-sm mt-1">{item.description}</p>
+                <p className="text-sm mt-1" style={{ color: '#252525', opacity: 0.7 }}>{item.description}</p>
               )}
               {item.address && (
-                <p className="text-gray-500 dark:text-muted-foreground text-sm mt-1">{item.address}</p>
+                <p className="text-sm mt-1" style={{ color: '#252525', opacity: 0.6 }}>{item.address}</p>
               )}
               <div className="flex items-center justify-between mt-2">
                 {item.time && (
-                  <span className="text-travel-blue font-medium text-sm">{item.time}</span>
+                  <span className="font-medium text-sm" style={{ color: '#945BD9' }}>{item.time}</span>
                 )}
                 {item.price && (
-                  <span className="bg-travel-orange text-white text-xs px-2 py-1 rounded-full">
+                  <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: '#945BD9', color: '#ffffff' }}>
                     {item.price}
                   </span>
                 )}
@@ -54,8 +54,8 @@ const Transport: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-6">
-        <h1 className="text-2xl font-bold text-travel-navy dark:text-foreground mb-2">Travel & Transport</h1>
-        <p className="text-gray-600 dark:text-muted-foreground">Your journey connections and accommodations</p>
+        <h1 className="text-2xl font-bold mb-2" style={{ color: '#252525' }}>Travel & Transport</h1>
+        <p style={{ color: '#252525', opacity: 0.7 }}>Your journey connections and accommodations</p>
       </div>
 
       {/* Transport Schedule */}
@@ -68,8 +68,8 @@ const Transport: React.FC = () => {
       <TransportCard title="🎫 General Transport" items={tripData.transport} />
 
       {/* Travel Tips */}
-      <div className="bg-gradient-to-r from-travel-blue to-travel-navy rounded-lg p-6 text-white shadow-lg border border-[#ececec]">
-        <h3 className="font-semibold text-lg mb-4">✈️ Travel Tips</h3>
+      <div className="rounded-lg p-6 shadow-lg border border-[#ececec]" style={{ background: 'linear-gradient(to right, #945BD9, #7C4DDB)', color: '#ffffff' }}>
+        <h3 className="font-semibold text-lg mb-4" style={{ color: '#ffffff' }}>✈️ Travel Tips</h3>
         <div className="space-y-3">
           <div className="flex items-start space-x-3">
             <span className="text-yellow-300">💡</span>
