@@ -36,8 +36,8 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
   const IconComponent = categoryIcons[activity.category];
   
   return (
-    <div className="mb-6">
-      <div className="p-5 rounded-2xl shadow-sm border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
+    <div className="mb-4">
+      <div className="p-4 rounded-xl bg-white border border-[#ececec] shadow-sm">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <h3 className="font-semibold text-base mb-1" style={{ color: '#252525' }}>{activity.name}</h3>
@@ -88,33 +88,33 @@ const Timeline: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-4 pb-24">
+    <div className="max-w-2xl mx-auto pb-24">
       {tripData.days.map((day, dayIndex) => (
         <div key={day.date} className="mb-6">
           <Collapsible open={openDays[day.date] ?? true}>
-            <CollapsibleTrigger 
-              onClick={() => toggleDay(day.date)}
-              className="w-full glass-effect py-4 mb-6 rounded-2xl px-4 shadow-sm border border-[#ececec] z-30 flex items-center justify-between" 
-              style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}
-            >
-              <div className="text-left">
-                <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
-                  {format(parseISO(day.date), 'EEEE, MMMM d')}
-                </h2>
-                <p className="font-medium flex items-center mt-1" style={{ color: '#945BD9' }}>
-                  <span className="mr-1">📍</span>
-                  {day.location}
-                </p>
-              </div>
-              {openDays[day.date] === false ? (
-                <ChevronDown className="h-5 w-5" style={{ color: '#252525' }} />
-              ) : (
-                <ChevronUp className="h-5 w-5" style={{ color: '#252525' }} />
-              )}
-            </CollapsibleTrigger>
+            <div className="sticky top-0 z-30 bg-gradient-to-b from-[#f7f7f7] via-[#f7f7f7] to-transparent pb-4">
+              <CollapsibleTrigger 
+                onClick={() => toggleDay(day.date)}
+                className="w-full bg-white/95 backdrop-blur-sm py-4 px-4 rounded-2xl shadow-sm border border-[#ececec] flex items-center justify-between hover:bg-white/100 transition-colors" 
+              >
+                <div className="text-left">
+                  <h2 className="text-xl font-bold" style={{ color: '#252525' }}>
+                    {format(parseISO(day.date), 'EEEE, MMMM d')}
+                  </h2>
+                  <p className="font-medium flex items-center mt-1" style={{ color: '#945BD9' }}>
+                    {day.location}
+                  </p>
+                </div>
+                {openDays[day.date] === false ? (
+                  <ChevronDown className="h-5 w-5" style={{ color: '#252525' }} />
+                ) : (
+                  <ChevronUp className="h-5 w-5" style={{ color: '#252525' }} />
+                )}
+              </CollapsibleTrigger>
+            </div>
             
             <CollapsibleContent>
-              <div className="space-y-0">
+              <div className="px-4 space-y-0">
                 {day.activities.map((activity, activityIndex) => (
                   <div
                     key={activity.id}
