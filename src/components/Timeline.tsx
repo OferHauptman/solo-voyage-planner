@@ -7,16 +7,16 @@ import { Music, Coffee, Wine, Gamepad2, ShoppingBag, Camera, Train, Hotel, Utens
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 const categoryColors = {
-  concert: 'bg-palette-pink text-white',
-  cafe: 'bg-palette-orange text-white',
-  bar: 'bg-palette-purple text-white',
-  gaming: 'bg-palette-orange text-white',
-  shopping: 'bg-palette-pink text-white',
-  sightseeing: 'bg-palette-purple text-white',
-  transport: 'bg-palette-orange text-white',
-  accommodation: 'bg-palette-purple text-white',
-  restaurant: 'bg-palette-pink text-white',
-  pub: 'bg-palette-purple text-white'
+  concert: 'bg-palette-pink',
+  cafe: 'bg-palette-orange',
+  bar: 'bg-palette-purple',
+  gaming: 'bg-palette-orange',
+  shopping: 'bg-palette-pink',
+  sightseeing: 'bg-palette-purple',
+  transport: 'bg-palette-orange',
+  accommodation: 'bg-palette-purple',
+  restaurant: 'bg-palette-pink',
+  pub: 'bg-palette-purple'
 };
 
 const categoryIcons = {
@@ -65,7 +65,7 @@ const ActivityCard: React.FC<{ activity: Activity }> = ({ activity }) => {
           <span className={cn(
             "text-xs px-2.5 py-1 rounded-full font-medium ml-3 flex-shrink-0 flex items-center space-x-1",
             categoryColors[activity.category]
-          )}>
+          )} style={{ color: '#ffffff' }}>
             <IconComponent size={12} />
             <span>{activity.category}</span>
           </span>
@@ -108,14 +108,14 @@ const Timeline: React.FC = () => {
                   </p>
                 </div>
                 {openDays[day.date] === false ? (
-                  <ChevronDown className="h-5 w-5 transition-transform duration-200" style={{ color: '#252525' }} />
+                  <ChevronDown className="h-5 w-5" style={{ color: '#252525' }} />
                 ) : (
-                  <ChevronUp className="h-5 w-5 transition-transform duration-200" style={{ color: '#252525' }} />
+                  <ChevronUp className="h-5 w-5" style={{ color: '#252525' }} />
                 )}
               </CollapsibleTrigger>
             </div>
             
-            <CollapsibleContent className="transition-all duration-300 ease-in-out data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <CollapsibleContent>
               <div className="space-y-0 pt-2">
                 {day.activities.map((activity, activityIndex) => (
                   <div
