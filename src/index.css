@@ -124,9 +124,16 @@
 
   /* CTA Button styles */
   .cta-button {
-    background-color: #945BD9;
+    background: linear-gradient(135deg, #A961FF 0%, #6B17AB 100%);
     color: #ffffff;
     font-weight: 600;
+    box-shadow: 0 2px 15px 9px rgba(169, 97, 255, 0.35);
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    box-shadow: 0 4px 20px 12px rgba(169, 97, 255, 0.45);
+    transform: translateY(-1px);
   }
 }
 
