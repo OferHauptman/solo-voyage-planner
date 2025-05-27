@@ -1,20 +1,20 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { tripData, Activity } from '@/data/tripData';
 import { cn } from '@/lib/utils';
 import { Music, Coffee, Wine, Gamepad2, ShoppingBag, Camera, Train, Hotel, Utensils, Beer } from 'lucide-react';
 
 const categoryColors = {
-  concert: 'bg-palette-pink text-palette-pink-dark',
-  cafe: 'bg-palette-orange text-palette-orange-dark',
-  bar: 'bg-palette-purple text-palette-purple-dark',
-  gaming: 'bg-palette-orange text-palette-orange-dark',
-  shopping: 'bg-palette-pink text-palette-pink-dark',
-  sightseeing: 'bg-palette-purple text-palette-purple-dark',
-  transport: 'bg-palette-orange text-palette-orange-dark',
-  accommodation: 'bg-palette-purple text-palette-purple-dark',
-  restaurant: 'bg-palette-pink text-palette-pink-dark',
-  pub: 'bg-palette-purple text-palette-purple-dark'
+  concert: 'bg-palette-pink text-white',
+  cafe: 'bg-palette-orange text-white',
+  bar: 'bg-palette-purple text-white',
+  gaming: 'bg-palette-orange text-white',
+  shopping: 'bg-palette-pink text-white',
+  sightseeing: 'bg-palette-purple text-white',
+  transport: 'bg-palette-orange text-white',
+  accommodation: 'bg-palette-purple text-white',
+  restaurant: 'bg-palette-pink text-white',
+  pub: 'bg-palette-purple text-white'
 };
 
 const categoryIcons = {
@@ -89,9 +89,6 @@ const PlaceCard: React.FC<{ activity: Activity; isSelected: boolean }> = ({ acti
 
 const Places: React.FC = () => {
   const [selectedPlaceId, setSelectedPlaceId] = useState<string | null>(null);
-  const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<google.maps.Map | null>(null);
-  const markersRef = useRef<google.maps.Marker[]>([]);
 
   // Flatten all activities from all days
   const allActivities = tripData.days.reduce((acc, day) => {
@@ -100,95 +97,16 @@ const Places: React.FC = () => {
     ));
   }, [] as Activity[]);
 
-  useEffect(() => {
-    // Initialize Google Maps
-    const initMap = () => {
-      if (!mapRef.current || !window.google) return;
-
-      const map = new google.maps.Map(mapRef.current, {
-        center: { lat: 51.5074, lng: -0.1278 }, // London center
-        zoom: 6,
-        styles: [
-          {
-            "featureType": "all",
-            "elementType": "geometry.fill",
-            "stylers": [{"color": "#f5f5f5"}]
-          },
-          {
-            "featureType": "all",
-            "elementType": "labels.text.fill",
-            "stylers": [{"color": "#666666"}]
-          },
-          {
-            "featureType": "water",
-            "elementType": "geometry.fill",
-            "stylers": [{"color": "#e6e6e6"}]
-          },
-          {
-            "featureType": "road",
-            "elementType": "geometry.fill",
-            "stylers": [{"color": "#ffffff"}]
-          }
-        ]
-      });
-
-      mapInstanceRef.current = map;
-
-      // Add markers for each activity
-      allActivities.forEach(activity => {
-        if (activity.coordinates) {
-          const IconComponent = categoryIcons[activity.category];
-          const marker = new google.maps.Marker({
-            position: { lat: activity.coordinates[1], lng: activity.coordinates[0] },
-            map: map,
-            title: activity.name,
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 8,
-              fillColor: activity.category === 'concert' ? '#C95792' : 
-                         activity.category === 'cafe' ? '#F8B55F' : '#7C4585',
-              fillOpacity: 1,
-              strokeColor: '#ffffff',
-              strokeWeight: 2
-            }
-          });
-
-          marker.addListener('click', () => {
-            setSelectedPlaceId(activity.id);
-            // Scroll to the corresponding card
-            const element = document.getElementById(`place-${activity.id}`);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          });
-
-          markersRef.current.push(marker);
-        }
-      });
-    };
-
-    // Load Google Maps script
-    if (!window.google) {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`;
-      script.async = true;
-      script.onload = initMap;
-      document.head.appendChild(script);
-    } else {
-      initMap();
-    }
-
-    return () => {
-      markersRef.current.forEach(marker => marker.setMap(null));
-      markersRef.current = [];
-    };
-  }, [allActivities]);
-
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
-      {/* Map */}
+      {/* Simple Map Placeholder */}
       <div className="mb-8">
-        <div ref={mapRef} className="h-80 w-full rounded-lg border border-[#ececec] bg-gray-200" />
+        <div className="h-80 w-full rounded-lg border border-[#ececec] bg-gray-200 flex items-center justify-center">
+          <div className="text-center">
+            <p className="text-gray-600 mb-2">Google Maps integration needed</p>
+            <p className="text-sm text-gray-500">Please add your Google Maps API key</p>
+          </div>
+        </div>
         <p className="text-xs text-center mt-2" style={{ color: '#252525', opacity: 0.6 }}>
           Click on markers to see place details below
         </p>

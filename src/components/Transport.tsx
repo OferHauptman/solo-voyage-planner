@@ -1,9 +1,19 @@
 
 import React from 'react';
 import { tripData } from '@/data/tripData';
-import { Train, Plane, Bus } from 'lucide-react';
+import { Plane, Train, Hotel } from 'lucide-react';
 
-const TransportCard: React.FC<{ title: string; items: any[]; icon?: React.ComponentType<{ size?: number }> }> = ({ title, items, icon: IconComponent }) => {
+interface TransportItem {
+  id?: string;
+  name: string;
+  description?: string;
+  address?: string;
+  time?: string;
+  price?: string;
+  date?: string;
+}
+
+const TransportCard: React.FC<{ title: string; items: TransportItem[]; icon?: React.ComponentType<any> }> = ({ title, items, icon: IconComponent }) => {
   return (
     <div className="rounded-lg shadow-sm overflow-hidden mb-6 border border-[#ececec]" style={{ backgroundColor: '#ffffff' }}>
       <div className="px-4 py-3 flex items-center space-x-2" style={{ backgroundColor: '#945BD9' }}>
@@ -19,12 +29,24 @@ const TransportCard: React.FC<{ title: string; items: any[]; icon?: React.Compon
                 <p className="text-sm mt-1" style={{ color: '#252525', opacity: 0.7 }}>{item.description}</p>
               )}
               {item.address && (
-                <p className="text-sm mt-1" style={{ color: '#252525', opacity: 0.6 }}>{item.address}</p>
+                <p className="text-sm mt-1 flex items-center" style={{ color: '#252525', opacity: 0.6 }}>
+                  <span className="mr-1">📍</span>
+                  {item.address}
+                </p>
               )}
               <div className="flex items-center justify-between mt-2">
-                {item.time && (
-                  <span className="font-medium text-sm" style={{ color: '#945BD9' }}>{item.time}</span>
-                )}
+                <div className="flex flex-col">
+                  {item.date && (
+                    <span className="font-medium text-sm" style={{ color: '#945BD9' }}>
+                      📅 {item.date}
+                    </span>
+                  )}
+                  {item.time && (
+                    <span className="font-medium text-sm" style={{ color: '#945BD9' }}>
+                      🕐 {item.time}
+                    </span>
+                  )}
+                </div>
                 {item.price && (
                   <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: '#945BD9', color: '#ffffff' }}>
                     {item.price}
@@ -49,6 +71,28 @@ const Transport: React.FC = () => {
     })));
   }, [] as any[]);
 
+  const enhancedTransport = tripData.transport.map(item => ({
+    ...item,
+    date: item.name.includes('Israel to London') ? '2025-06-05' : 
+          item.name.includes('London to Antwerp') ? '2025-06-09' :
+          item.name.includes('London to Israel') ? '2025-06-11' : undefined,
+    time: item.name.includes('Israel to London') ? 'Morning' : 
+          item.name.includes('London to Antwerp') ? 'Mid-day' :
+          item.name.includes('London to Israel') ? 'Evening' : undefined,
+    address: item.name.includes('Israel to London') ? 'Ben Gurion Airport → Heathrow Airport' : 
+             item.name.includes('London to Antwerp') ? 'London St Pancras → Antwerp Central' :
+             item.name.includes('London to Israel') ? 'Heathrow Airport → Ben Gurion Airport' : undefined
+  }));
+
+  const enhancedTransportActivities = transportActivities.map(activity => ({
+    ...activity,
+    time: activity.time || 'Schedule TBD',
+    address: activity.name.includes('Arrival') ? 'Heathrow Airport → Olympia/Hammersmith' :
+             activity.name.includes('Train to Antwerp') ? 'London St Pancras → Antwerp Central via Brussels' :
+             activity.name.includes('Travel to London') ? 'Antwerp Central → London St Pancras' :
+             activity.name.includes('Flight to Israel') ? 'Heathrow Airport → Ben Gurion Airport' : activity.address
+  }));
+
   return (
     <div className="max-w-2xl mx-auto p-4 pb-24">
       <div className="text-center mb-6">
@@ -59,16 +103,16 @@ const Transport: React.FC = () => {
       {/* Flights */}
       <TransportCard 
         title="✈️ Flights" 
-        items={tripData.transport.filter(item => item.name.includes('Flight'))}
+        items={enhancedTransport.filter(item => item.name.includes('Flight'))}
         icon={Plane}
       />
 
-      {/* Trains & Buses */}
+      {/* Trains & Local Transport */}
       <TransportCard 
-        title="🚂 Trains & Buses" 
+        title="🚂 Trains & Local Transport" 
         items={[
-          ...tripData.transport.filter(item => item.name.includes('Train')),
-          ...transportActivities
+          ...enhancedTransport.filter(item => item.name.includes('Train')),
+          ...enhancedTransportActivities
         ]}
         icon={Train}
       />
@@ -76,8 +120,11 @@ const Transport: React.FC = () => {
       {/* Accommodations */}
       <TransportCard 
         title="🏨 Accommodations" 
-        items={tripData.accommodations}
-        icon={Bus}
+        items={tripData.accommodations.map(acc => ({
+          ...acc,
+          date: acc.location === 'London' ? 'June 5-9, 2025' : 'June 9-11, 2025'
+        }))}
+        icon={Hotel}
       />
     </div>
   );
